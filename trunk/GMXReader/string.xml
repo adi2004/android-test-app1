@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE roles SYSTEM "roles.dtd">
+<roles>
+    <role1>User</role1>
+    <role2>Author</role2>
+    <role3>Admin</role3>
+    <role4/>
+</roles>

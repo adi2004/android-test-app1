@@ -1,7 +1,5 @@
-import org.apache.log4j.*;
+import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
-
-import java.util.*;
 
 // How to use log4j
 public class TestLogging {

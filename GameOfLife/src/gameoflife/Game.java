@@ -17,14 +17,13 @@ import java.util.Set;
 
 // started at 9:40, in the train to Bucharest, on 22. Nov. 2014
 /**
- * The story (because a well written code is like a story):
- * Once upon a time there was a world. And this world had only 2 dimensions and
- * was inhabited by pixel like creatures.
- * Each living creature was squared like, and could only have 8 neigbours. And
- * the timed passed, and as it went a cycle ended and another one beginned.
- * Whenever 3 creatures were together they gave birth to another one, but
- * whenever they were alone, or if they were too crowded, they died. And so the
- * game of life was...
+ * The story (because a well written code is like a story): Once upon a time
+ * there was a world. And this world had only 2 dimensions and was inhabited by
+ * pixel like creatures. Each living creature was squared like, and could only
+ * have 8 neigbours. And the timed passed, and as it went a cycle ended and
+ * another one beginned. Whenever 3 creatures were together they gave birth to
+ * another one, but whenever they were alone, or if they were too crowded, they
+ * died. And so the game of life was...
  */
 public class Game {
 	Set<Point> livingEntities;
@@ -32,35 +31,34 @@ public class Game {
 	public static void main(String[] args) {
 		Game g = new Game();
 		GameView v = new GameView(g);
-		g.initWithRandom();
-//		g.initWithLine();
-//		g.initWithL();
+		// g.init(new int[][] { { 1, 1, 1 } });
+		// g.init(new int[][] { { 1 }, { 1, 0, 1 }, { 1, 1 } });
+		// g.init(new int[][] { { 1, 1, 0, 0 }, { 0, 0, 1 }, { 0, 0, 0, 1 },
+		// { 0, 0, 0, 1 }, { 0, 0, 0, 1 }, { 0, 0, 1 }, { 1, 1 } });
+		g.init(new int[][] { { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 } });
+		// g.initWithRandom();
 		do {
 			v.update();
 		} while (g.nextStep());
 	}
 
-	private void initWithL() {
+	private void init(int[][] is) {
 		livingEntities = new HashSet<Point>();
-		livingEntities.add(new Point(0, 0));
-		livingEntities.add(new Point(0, 1));
-		livingEntities.add(new Point(0, 2));
-		livingEntities.add(new Point(1, 2));
-		livingEntities.add(new Point(2, 1));
-	}
-
-	private void initWithLine() {
-		livingEntities = new HashSet<Point>();
-		livingEntities.add(new Point(0, 1));
-		livingEntities.add(new Point(1, 1));
-		livingEntities.add(new Point(2, 1));
+		System.out.println("Begining initializing with array");
+		for (int y = 0; y < is.length; y++) {
+			for (int x = 0; x < is[y].length; x++) {
+				System.out.print(is[y][x] + " ");
+				if (is[y][x] == 1)
+					livingEntities.add(new Point(x, y));
+			}
+			System.out.println();
+		}
 	}
 
 	public boolean nextStep() {
 		/**
-		 * get offsprings
-		 * for each dead cell and living entity
-		 * if it will survive move to the next cycle
+		 * get offsprings for each dead cell and living entity if it will
+		 * survive move to the next cycle
 		 */
 		if (livingEntities.size() == 0)
 			return false;
@@ -78,8 +76,8 @@ public class Game {
 				newWorld.add(living);
 			}
 		}
-//		if (newWorld.size() == livingEntities.size())
-//			return false;
+		// if (newWorld.size() == livingEntities.size())
+		// return false;
 		livingEntities = newWorld;
 		return true;
 	}
@@ -123,7 +121,8 @@ public class Game {
 		if (livingEntities == null) {
 			livingEntities = new HashSet<Point>();
 			for (int i = 0; i < 30; i++) {
-				livingEntities.add(new Point((int) (5 - Math.random() * 10), (int) (5 - Math.random() * 10)));
+				livingEntities.add(new Point((int) (5 - Math.random() * 10),
+						(int) (5 - Math.random() * 10)));
 			}
 		}
 	}

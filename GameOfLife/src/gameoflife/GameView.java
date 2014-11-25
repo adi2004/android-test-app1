@@ -14,26 +14,20 @@ public class GameView {
 	}
 
 	public void update() {
-		try {
-			Runtime.getRuntime().exec("clear");
-		} catch (IOException e1) {
-			System.out.println("Error with clear...");
-			e1.printStackTrace();
-		}
 
 		System.out.println("=== Cycle " + cycle++ + " ===");
 
 		Set<Point> aliveCells = g.getCells();
-		//displayFixedMat(aliveCells);
+		displayFixedMat(aliveCells);
 		//displayFixedMatUsintStringBuilder(aliveCells);
 		//displayVariableSizeMat(aliveCells);
-		displayBounds(aliveCells);
+		//displayBounds(aliveCells);
 
-//		try {
-//			Thread.sleep(25);
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
+		try {
+			Thread.sleep(200);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 	private void displayBounds(Set<Point> aliveCells) {

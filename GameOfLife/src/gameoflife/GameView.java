@@ -14,7 +14,6 @@ public class GameView {
 	}
 
 	public void update() {
-
 		System.out.println("=== Cycle " + cycle++ + " ===");
 
 		Set<Point> aliveCells = g.getCells();
@@ -22,7 +21,6 @@ public class GameView {
 		//displayFixedMatUsintStringBuilder(aliveCells);
 		//displayVariableSizeMat(aliveCells);
 		//displayBounds(aliveCells);
-
 		try {
 			Thread.sleep(200);
 		} catch (InterruptedException e) {
